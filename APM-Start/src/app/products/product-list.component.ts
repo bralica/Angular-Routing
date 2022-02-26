@@ -29,13 +29,23 @@ export class ProductListComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe({
-      next: products => {
-        this.products = products;
-        this.filteredProducts = this.performFilter(this.listFilter);
-      },
-      error: err => this.errorMessage = err
-    });
+    // this.productService.getProducts().subscribe({
+    //   next: products => {
+    //     this.products = products;
+    //     this.filteredProducts = this.performFilter(this.listFilter);
+    //   },
+    //   error: err => this.errorMessage = err
+    // });
+
+    this.productService.getProducts().subscribe((products) => {
+      this.products = products;
+      this.filteredProducts = this.performFilter(this.listFilter);
+    },
+     ((err) => {
+        this.errorMessage = err;
+      })
+    );
+
   }
 
   performFilter(filterBy: string): Product[] {
