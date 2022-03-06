@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Product } from './product';
 import { ProductService } from './product.service';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   templateUrl: './product-list.component.html',
