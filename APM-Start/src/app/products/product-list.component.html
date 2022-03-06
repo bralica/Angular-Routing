@@ -38,7 +38,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of filteredProducts">
+          <tr *ngFor="let product of filteredProducts">+
             <td>
               <img *ngIf="showImage && product.imageUrl"
                    [src]="product.imageUrl"
@@ -47,7 +47,10 @@
                    [style.margin.px]="imageMargin">
             </td>
             <td>
-              <a>
+              <a
+                [routerLink]="['/products', product.id]"
+                [queryParams]="{ filterBy: listFilter, showImage: showImage }"
+              >
                 {{ product.productName }}
               </a>
             </td>
@@ -60,7 +63,7 @@
             </td>
             <td>
               <button class="btn btn-outline-primary btn-sm">
-                Edit
+                <a [routerLink]="['/products', product.id, 'edit']">Edit</a>
               </button>
             </td>
           </tr>
